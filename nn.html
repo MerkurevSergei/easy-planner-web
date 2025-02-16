@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Справочник</title>
+  <!-- Подключаем внешний CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Шапка сайта -->
+  <header class="main-header">
+    <nav class="navbar">
+      <ul>
+        <li><a href="#">Главная</a></li>
+        <li><a href="#">Проекты</a></li>
+        <li><a href="#">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
+
+    <!-- Заголовок справочника (отдельный блок, не входящий в шапку) -->
+    <div class="directory-title">
+      <h1>Название справочника</h1>
+    </div>
+    
+  <!-- Панель управления -->
+  <div class="control-panel">
+    <button id="addBtn" title="Добавить">&#x2795;</button>
+    <button id="editBtn" title="Редактировать">&#x270E;</button>
+    <button id="deleteBtn" title="Удалить">&#x1F5D1;</button>
+  </div>
+
+  <!-- Таблица со справочником -->
+  <div class="table-container">
+    <table id="dataTable">
+      <thead>
+        <tr>
+          <th>Наименование</th>
+          <th>Описание</th>
+          <th>Статус</th>
+          <th>Идентификатор ИС</th>
+          <th>Код ИС</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        </tr>
+        <!-- Дополнительные строки будут добавляться динамически -->
+      </tbody>
+    </table>
+</div>
+
+  <!-- Боковое меню для добавления/редактирования -->
+  <div id="sideMenu" class="side-menu">
+    <h2 id="formTitle">Добавить элемент</h2>
+    <form id="elementForm">
+      <label for="name">Наименование</label>
+      <input type="text" id="name" name="name" required>
+      
+      <label for="description">Описание</label>
+      <textarea id="description" name="description" rows="3" required></textarea>
+      
+      <label for="code">Код</label>
+      <input type="text" id="code" name="code" required>
+      
+      <label for="identifier">Идентификатор</label>
+      <input type="text" id="identifier" name="identifier" required>
+      
+      <button type="submit">Сохранить</button>
+      <button type="button" id="cancelBtn">Отмена</button>
+    </form>
+  </div>
+  
+  <!-- Подключаем внешний скрипт -->
+  <script src="js/project.js" defer></script>
+</body>
+</html>

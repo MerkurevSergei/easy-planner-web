@@ -1,0 +1,183 @@
+/* Общий сброс */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Убираем отступы у html и body, чтобы header был вплотную к верху */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Шапка сайта */
+.main-header {
+  background-color: #5b9bd5; /* Современный насыщенный синий */
+  color: #fff;
+  padding: 4px 20px; /* Компактные отступы */
+  display: flex;
+  align-items: center;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.9rem; /* Немного меньше шрифт */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #dce6f2;
+}
+
+/* Блок с названием справочника (отдельно от шапки) */
+.directory-title {
+  margin: 15px 0;
+}
+
+.directory-title h1 {
+  font-size: 1.75rem;
+  color: #333;
+}
+
+
+body {
+  padding: 0 20px 20px 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Панель управления с использованием Flexbox */
+.control-panel {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.control-panel button {
+  background: #e0e0e0;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.control-panel button:hover {
+  background: #d0d0d0;
+}
+
+/* Обёртка для таблицы с горизонтальным скроллом */
+.table-container {
+  overflow-x: auto;
+}
+
+/* Таблица с использованием CSS Grid */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+thead, tbody {
+  display: contents;
+}
+
+/* Каждая строка — грид-контейнер с 5 колонками;
+   minmax гарантирует, что колонка не станет меньше 100px, а white-space: nowrap предотвращает перенос текста */
+tr {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(100px, 1fr));
+  align-items: center;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 12px 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+th {
+  background-color: #eee;
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+tr.selected {
+  background-color: #d0ebff;
+}
+
+/* Боковое меню для добавления/редактирования с использованием Flexbox */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -320px; /* Скрыто за пределами экрана */
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+
+.side-menu.open {
+  right: 0;
+}
+
+.side-menu h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.side-menu form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.side-menu label {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.side-menu input,
+.side-menu textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.side-menu button {
+  padding: 10px 16px;
+  border: none;
+  background: #e0e0e0;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.side-menu button:hover {
+  background: #d0d0d0;
+}
