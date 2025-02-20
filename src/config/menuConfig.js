@@ -1,13 +1,13 @@
 const menu = {
   baseItems: [
     { label: 'План проекта', href: '/' },
-    { label: 'План спринта', href: '/projects' }
+    { label: 'План спринта', href: '/' }
   ],
   referenceItems: [
     { label: 'Спринты', href: '/' },
-    { label: 'Участники', href: '/projects' },
+    { label: 'Участники', href: '/' },
     { label: 'Роли', href: '/' },
-    { label: 'Проекты', href: '/contacts' }
+    { label: 'Проекты', href: '/projects' }
   ],
 };
 

@@ -1,69 +1,20 @@
-/* Общий сброс */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+.directory {
+  position: relative;
+  padding: 20px;
 }
 
-/* Убираем отступы у html и body, чтобы header был вплотную к верху */
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-/* Шапка сайта */
-.main-header {
-  background-color: #5b9bd5; /* Современный насыщенный синий */
-  color: #fff;
-  padding: 4px 20px; /* Компактные отступы */
-  display: flex;
-  align-items: center;
-}
-
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 15px;
-}
-
-.navbar a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 0.9rem; /* Немного меньше шрифт */
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.navbar a:hover {
-  color: #dce6f2;
-}
-
-/* Блок с названием справочника (отдельно от шапки) */
-.directory-title {
-  margin: 15px 0;
-}
-
-.directory-title h1 {
-  font-size: 1.75rem;
-  color: #333;
-}
-
-
-body {
-  padding: 0 20px 20px 20px;
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
+.directoryTitle {
+  margin-bottom: 20px;
 }
 
 /* Панель управления с использованием Flexbox */
-.control-panel {
+.controlPanel {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
 }
 
-.control-panel button {
+.controlPanel button {
   background: #e0e0e0;
   border: none;
   padding: 8px 16px;
@@ -72,36 +23,36 @@ body {
   transition: background 0.3s;
 }
 
-.control-panel button:hover {
+.controlPanel button:hover {
   background: #d0d0d0;
 }
 
 /* Обёртка для таблицы с горизонтальным скроллом */
-.table-container {
+.tableContainer {
   overflow-x: auto;
 }
 
 /* Таблица с использованием CSS Grid */
-table {
+.dataTable {
   width: 100%;
   border-collapse: collapse;
   display: grid;
   grid-template-rows: auto 1fr;
 }
 
-thead, tbody {
+.tableHead, .tableBody {
   display: contents;
 }
 
 /* Каждая строка — грид-контейнер с 5 колонками;
    minmax гарантирует, что колонка не станет меньше 100px, а white-space: nowrap предотвращает перенос текста */
-tr {
+.tableRow {
   display: grid;
   grid-template-columns: repeat(5, minmax(100px, 1fr));
   align-items: center;
 }
 
-th, td {
+.tableHead, .tableData {
   border: 1px solid #ccc;
   padding: 12px 16px;
   white-space: nowrap;
@@ -110,22 +61,22 @@ th, td {
   text-align: left;
 }
 
-th {
+.tableHead {
   background-color: #eee;
   font-weight: bold;
 }
 
-tr:hover {
+.tableRow:hover {
   background-color: #f1f1f1;
   cursor: pointer;
 }
 
-tr.selected {
+.tableRow.selected {
   background-color: #d0ebff;
 }
 
 /* Боковое меню для добавления/редактирования с использованием Flexbox */
-.side-menu {
+.sideMenu {
   position: fixed;
   top: 0;
   right: -320px; /* Скрыто за пределами экрана */
@@ -141,35 +92,35 @@ tr.selected {
   z-index: 1000;
 }
 
-.side-menu.open {
+.sideMenu.open {
   right: 0;
 }
 
-.side-menu h2 {
+.sideMenu h2 {
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
-.side-menu form {
+.sideMenu form {
   display: flex;
   flex-direction: column;
   gap: 10px;
   flex: 1;
 }
 
-.side-menu label {
+.sideMenu label {
   font-size: 0.9rem;
   font-weight: bold;
 }
 
-.side-menu input,
-.side-menu textarea {
+.sideMenu input,
+.sideMenu textarea {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-.side-menu button {
+.sideMenu button {
   padding: 10px 16px;
   border: none;
   background: #e0e0e0;
@@ -178,6 +129,6 @@ tr.selected {
   transition: background 0.3s ease;
 }
 
-.side-menu button:hover {
+.sideMenu button:hover {
   background: #d0d0d0;
 }

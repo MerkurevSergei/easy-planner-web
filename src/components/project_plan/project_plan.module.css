@@ -1,0 +1,84 @@
+.header {
+  background-color: #5b9bd5; /* Современный насыщенный синий */
+  color: #fff;
+  padding: 4px 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Разделяем левую и правую часть */
+  align-items: center; /* Выравнивание по вертикали */
+}
+
+.leftMenu {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.leftMenu a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.9rem; /* Немного меньше шрифт */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.leftMenu a:hover {
+  color: #dce6f2;
+}
+
+.rightMenu {
+  display: flex;
+  align-items: center; /* Выравнивание по вертикали */
+}
+
+.dropdown {
+  position: relative; /* Позиционирование для выпадающего списка */
+}
+
+.dropdownToggle {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-right: 15px; /* Отступ справа для иконок */
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.dropdownMenu li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdownMenu li:hover {
+  background-color: #f1f1f1;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem; /* Увеличиваем размер шрифта для иконок */
+  margin-left: 15px; /* Отступ слева для иконок */
+}
+
+/* Убираем подчеркивание для иконок */
+.icon a {
+  text-decoration: none; /* Убираем подчеркивание */
+  color: #fff; /* Убедитесь, что цвет иконок совпадает с цветом шапки */
+}
+
+.icon a:hover {
+  color: #dce6f2; /* Изменяем цвет при наведении, если нужно */
+}
