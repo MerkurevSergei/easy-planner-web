@@ -1,4 +1,4 @@
-import Directory from "@components/directory/directory";
+import Directory from "@components/Directory/Directory";
 import { directoryConfig } from '@config/projectsDirectoryConfig';
 
 export default function Projects() {

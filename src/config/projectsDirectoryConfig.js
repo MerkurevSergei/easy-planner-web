@@ -3,14 +3,22 @@ export const directoryConfig = {
   columns: [
     { key: "name", label: "Наименование" },
     { key: "description", label: "Описание" },
-    { key: "status", label: "Статус" },
-    { key: "systemId", label: "Идентификатор ИС" },
-    { key: "systemCode", label: "Код ИС" },
+    { key: "isId", label: "Идентификатор ИС" },
+    { key: "isCode", label: "Код ИС" },
   ],
   formFields: [
     { key: "name", label: "Наименование", type: "text" },
     { key: "description", label: "Описание", type: "textarea" },
-    { key: "code", label: "Код", type: "text" },
-    { key: "identifier", label: "Идентификатор", type: "text" },
+    { key: "isId", label: "Идентификатор ИС" },
+    { key: "isCode", label: "Код ИС" }
   ],
+  API_CONFIG: {
+    BASE_URL: 'http://localhost:8080/api',
+    ENDPOINTS: {
+      GET_DATA: '/projects',
+      POST_DATA: '/items',
+      PUT_DATA: '/items',
+      DELETE_DATA: '/items'
+    }
+  }
 };
