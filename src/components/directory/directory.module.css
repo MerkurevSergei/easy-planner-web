@@ -14,59 +14,6 @@
   color: #333;
 }
 
-/* Контейнер таблицы с горизонтальным скроллом */
-.tableContainer {
-  overflow-x: auto;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-/* Стили таблицы */
-.dataTable {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: auto;
-  min-width: 600px;
-}
-
-.dataTable thead {
-  background-color: #f1f3f5;
-  border-bottom: 2px solid #dee2e6;
-}
-
-.tableRow {
-  border-bottom: 1px solid #eee;
-}
-
-.dataTable tbody .tableRow:hover {
-  background-color: #f1f3f5 !important;
-}
-
-/* Заголовки таблицы */
-.tableHead {
-  padding: 16px;
-  text-align: left;
-  font-weight: 600;
-  color: #444;
-  white-space: nowrap;
-  background-color: inherit !important; /* Наследуем цвет из родителя */
-}
-
-/* Ячейки таблицы */
-.tableData {
-  padding: 14px 16px;
-  color: #666;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 300px;
-}
-
-/* Выделенная строка */
-.selectedRow {
-  background-color: #e3f2fd !important;
-}
 
 /* Боковое меню */
 .sideMenuOverlay {

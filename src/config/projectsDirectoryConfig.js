@@ -16,8 +16,8 @@ export const directoryConfig = {
     BASE_URL: 'http://localhost:8080/api',
     ENDPOINTS: {
       GET_DATA: '/projects',
-      POST_DATA: '/items',
-      PUT_DATA: '/items',
+      POST_DATA: '/projects',
+      PUT_DATA: '/projects',
       DELETE_DATA: '/items'
     }
   }

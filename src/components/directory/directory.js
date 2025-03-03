@@ -1,5 +1,6 @@
 "use client";
 import ControlPanel from './ControlPanel/ControlPanel';
+import DataTable from './DataTable/DataTable';
 import { useState, useEffect } from 'react';
 import styles from './Directory.module.css';
 
@@ -37,6 +38,7 @@ export default function Directory({ config }) {
     }
   };
 
+  
   useEffect(() => {
     const abortController = new AbortController();
     
@@ -67,22 +69,66 @@ export default function Directory({ config }) {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (editMode) {
-      // Редактирование существующей записи
-      setData(prev => prev.map(item => 
-        item.id === selectedRow ? { ...formData, id: selectedRow } : item
-      ));
-    } else {
-      // Добавление новой записи
-      const newItem = { ...formData, id: Date.now() };
-      setData(prev => [...prev, newItem]);
+    try {
+      // Валидация обязательных полей
+      const requiredFields = formFields.filter(f => f.required);
+      const isInvalid = requiredFields.some(f => !formData[f.key]);
+      
+      if (isInvalid) {
+        throw new Error('Заполните все обязательные поля');
+      }
+  
+      setLoading(true);
+      setError(null);
+  
+      // Оптимистичное обновление для добавления
+      let tempId = null;
+      if (!editMode) {
+        tempId = Date.now();
+        setData(prev => [...prev, { ...formData, id: tempId }]);
+      }
+  
+      const url = editMode 
+        ? `${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.PUT_DATA}/${selectedRow}`
+        : `${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.POST_DATA}`;
+  
+      const method = editMode ? 'PUT' : 'POST';
+  
+      const response = await fetch(url, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+  
+      if (!response.ok) throw new Error(editMode ? 'Ошибка обновления' : 'Ошибка создания');
+  
+      const result = await response.json();
+  
+      // Обновляем данные с ответом сервера
+      setData(prev => {
+        if (editMode) {
+          return prev.map(item => item.id === selectedRow ? result : item);
+        } else {
+          return prev.map(item => item.id === tempId ? result : item);
+        }
+      });
+  
+      setIsMenuOpen(false);
+      setSelectedRow(null);
+      setFormData({});
+      
+    } catch (err) {
+      // Откатываем оптимистичное обновление при ошибке
+      if (!editMode && tempId) {
+        setData(prev => prev.filter(item => item.id !== tempId));
+      }
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
-    
-    setIsMenuOpen(false);
-    setSelectedRow(null);
   };
 
   const handleCancel = () => {
@@ -104,51 +150,14 @@ export default function Directory({ config }) {
         isEditDisabled={!selectedRow}
       />
 
-      {/* Таблица */}
-      <div className={styles.tableContainer}>
-      {loading ? (
-          <div className={styles.loader}>Загрузка...</div>
-        ) : (
-          <table className={styles.dataTable}>
-            <thead>
-              <tr className={styles.tableRow}>
-                {columns.map((column) => (
-                  <th 
-                    key={column.key} 
-                    className={styles.tableHead}
-                  >
-                    {column.label}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((item) => (
-                <tr
-                  key={item.id}
-                  className={`${styles.tableRow} ${
-                    selectedRow === item.id ? styles.selectedRow : ''
-                  }`}
-                  onClick={() => setSelectedRow(item.id)}
-                >
-                  {columns.map((column) => (
-                    <td 
-                      key={column.key} 
-                      className={styles.tableData}
-                      title={item[column.key]}
-                    >
-                      {item[column.key]}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-        
-      </div>
+      <DataTable
+        columns={columns}
+        data={data}
+        selectedRow={selectedRow}
+        onSelect={setSelectedRow}
+        loading={loading}
+      />
 
-      {/* Оверлей и боковое меню */}
       {isMenuOpen && (
         <div 
           className={`${styles.sideMenuOverlay} ${styles.visible}`} 
